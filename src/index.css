@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    background-color: #04060d;
+  }
+
+  body {
+    @apply font-hand text-star-light;
+    overscroll-behavior: none;
+  }
+
+  /* Every element in this experience shares one typeface, per the brief */
+  h1,
+  h2,
+  h3,
+  p,
+  span,
+  button,
+  input,
+  label {
+    font-family: 'Caveat', cursive;
+  }
+
+  ::selection {
+    background: rgba(255, 233, 179, 0.35);
+  }
+
+  /* Thin, warm scrollbar so modal scroll areas stay in-theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 233, 179, 0.25);
+    border-radius: 999px;
+  }
+
+  /* Respect reduced-motion preferences across every custom animation */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 18px rgba(255, 233, 179, 0.45);
+  }
+
+  .glass-panel {
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.02)
+    );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
